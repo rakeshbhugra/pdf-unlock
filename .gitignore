@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+build/
+*.spec
+
+# Node
+node_modules/
+
+# Electron build output
+electron-app/dist/
+
+# OS
+.DS_Store

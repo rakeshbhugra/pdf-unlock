@@ -1,0 +1,38 @@
+{
+  "name": "pdf-unlock",
+  "version": "1.0.0",
+  "description": "Unlock password-protected PDFs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --mac",
+    "build:binary": "cd .. && pyinstaller --onefile --name pdf-unlock main.py && cp dist/pdf-unlock electron-app/resources/"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.pdfunlock.app",
+    "productName": "PDF Unlock",
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "dmg"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/pdf-unlock",
+        "to": "pdf-unlock"
+      }
+    ]
+  }
+}

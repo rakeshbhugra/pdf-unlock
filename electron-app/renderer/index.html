@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>PDF Unlock</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      background: #000000;
+      color: #ffffff;
+      padding: 48px 32px 32px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-app-region: drag;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 28px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      -webkit-app-region: no-drag;
+    }
+
+    .file-zone {
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .file-zone:hover {
+      border-color: #666;
+      background: #111;
+    }
+
+    .file-zone.has-file {
+      border-color: #444;
+    }
+
+    .file-zone-icon {
+      font-size: 28px;
+      margin-bottom: 6px;
+      filter: grayscale(1);
+    }
+
+    .file-zone-text {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .file-zone-name {
+      font-size: 13px;
+      color: #fff;
+      margin-top: 6px;
+      word-break: break-all;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 11px;
+      font-weight: 500;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input[type="password"] {
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 15px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="password"]:focus {
+      border-color: #666;
+    }
+
+    input[type="password"]::placeholder {
+      color: #444;
+    }
+
+    .output-btn {
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .output-btn:hover {
+      border-color: #555;
+      color: #fff;
+    }
+
+    .output-btn.has-file {
+      color: #fff;
+    }
+
+    .output-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .output-btn:disabled:hover {
+      border-color: #333;
+      color: #666;
+    }
+
+    .unlock-btn {
+      background: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-top: 4px;
+    }
+
+    .unlock-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .unlock-btn:active {
+      background: #ccc;
+    }
+
+    .unlock-btn:disabled {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+    }
+
+    .unlock-btn.loading {
+      background: #333;
+      color: #999;
+    }
+
+    .unlock-btn.success {
+      background: #fff;
+      color: #000;
+    }
+
+    .unlock-btn.error {
+      background: #333;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>PDF Unlock</h1>
+
+  <div class="container">
+    <div id="file-zone" class="file-zone">
+      <div class="file-zone-icon">📄</div>
+      <div class="file-zone-text">Click to select PDF</div>
+      <div id="file-name" class="file-zone-name"></div>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter PDF password">
+    </div>
+
+    <div class="input-group">
+      <label>Save to (optional)</label>
+      <button id="output-btn" class="output-btn" disabled>
+        <span>📁</span>
+        <span id="output-name">Choose location...</span>
+      </button>
+    </div>
+
+    <button id="unlock-btn" class="unlock-btn" disabled>Unlock PDF</button>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
