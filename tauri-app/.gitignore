@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+src-tauri/target/
+
+# Generated icons (can be regenerated)
+# Keep icons in git for convenience
+
+# Logs
+*.log
+
+# OS files
+.DS_Store

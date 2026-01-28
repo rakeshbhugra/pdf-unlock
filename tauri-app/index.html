@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Unlock</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <h1>PDF Unlock</h1>
+
+  <div class="container">
+    <div id="file-zone" class="file-zone">
+      <div class="file-zone-icon">📄</div>
+      <div class="file-zone-text">Click to select PDF</div>
+      <div id="file-name" class="file-zone-name"></div>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter PDF password">
+    </div>
+
+    <div class="input-group">
+      <label>Save to (optional)</label>
+      <button id="output-btn" class="output-btn" disabled>
+        <span>📁</span>
+        <span id="output-name">Choose location...</span>
+      </button>
+    </div>
+
+    <button id="unlock-btn" class="unlock-btn" disabled>Unlock PDF</button>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
