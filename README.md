@@ -6,7 +6,7 @@ A simple macOS app to remove password protection from PDFs.
 
 ## Download
 
-Download the latest `.dmg` from the [Releases](https://github.com/user/pdf-unlock/releases) page.
+Download the latest `.dmg` from the [Releases](https://github.com/rakeshbhugra/pdf-unlock/releases) page.
 
 ## Usage
 
@@ -45,7 +45,7 @@ pdf-unlock/
 
 ```bash
 # Clone the repo
-git clone https://github.com/user/pdf-unlock.git
+git clone https://github.com/rakeshbhugra/pdf-unlock.git
 cd pdf-unlock
 
 # Install Python dependencies and build binary
